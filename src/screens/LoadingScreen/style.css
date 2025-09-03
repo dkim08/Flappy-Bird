@@ -1,0 +1,23 @@
+.loader  {
+  height: 20px;
+  background-color: #f31111;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: load 3s linear infinite;
+}
+
+@keyframes load{
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.loading-screen {
+  width: 100%;
+  height: 100vh;
+}

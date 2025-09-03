@@ -1,0 +1,36 @@
+.main-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 252px;
+}
+
+.bird {
+    position: absolute;
+    left: 50%;
+    animation: fly 1.5s ease-in-out infinite;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -50px);
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+.title {
+    margin-top: 50px;
+}
+
+.welcome {
+    margin-top: 90px;
+    cursor: pointer;
+}

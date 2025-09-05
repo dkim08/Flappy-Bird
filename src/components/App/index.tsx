@@ -3,6 +3,7 @@ import './style.css';
 import React from "react";
 import MainMenu from "../../screens/MainMenu";
 import LoadingScreen from "../../screens/LoadingScreen";
+import GameScreen from "../../screens/GameScreen";
 import landingPage from "../../../public/assets/Landing Page.svg"
 
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
       <div className="content">
         {currentScreen === "main" && <MainMenu action={handleNextScreen}/>}
         {currentScreen === 'loading' && <LoadingScreen action={handleNextScreen}/>}
+        {currentScreen === 'game' && <GameScreen action={handleNextScreen}/>}
       </div>
     </div>
   );

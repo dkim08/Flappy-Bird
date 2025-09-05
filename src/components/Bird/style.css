@@ -1,0 +1,7 @@
+.flappy-bird-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 252px;
+}

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import './style.css';
 import pipeBottom from "../../../public/assets/Pipe-bottom.svg";
 import pipeUp from "../../../public/assets/Pipe-up.svg";
+import './style.css';
 
 export type TPipePosition = "top" | "bottom";
 export type TPipeSize = "short" | "large";
@@ -52,22 +52,22 @@ const Pipes: React.FC<PipeProps> = ({ position, size, coordX = 0 }: PipeProps) =
     // }
 // }
 
-useEffect(() => {
-    setTimeout(() => setMove(move - 3), 50);
-})
+    useEffect(() => {
+        setTimeout(() => setMove(move - 3), 50);
+    })
 
-return (
-    <div
-        className="pipes-container"
-        style={{
-            transform: `translateX(${move}px)`,
-        }}
-    >
-        <Pipe size={size} position={position} />
+    return (
+        <div
+            className="pipes-container"
+            style={{
+                transform: `translateX(${move}px)`,
+            }}
+        >
+            <Pipe size={size} position={'top'} />
 
-        <Pipe size={size2} position={position2} />
-    </div>
-)
+            <Pipe size={size2} position={'top'} />
+        </div>
+    )
 }
 
 export default Pipes;

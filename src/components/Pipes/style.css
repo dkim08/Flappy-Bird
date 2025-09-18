@@ -21,7 +21,7 @@
 
 .short-pipe-wrapper,
 .large-pipe-wrapper {
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .short-pipe-wrapper img,
@@ -30,3 +30,8 @@
     height: 100%;
     object-fit: cover;
 }
+
+.pipes-container img {
+    width: 100%;
+}
+

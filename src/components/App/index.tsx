@@ -7,10 +7,14 @@ import GameScreen from "../../screens/GameScreen";
 import landingPage from "../../../public/assets/Landing Page.svg"
 
 
-type TScreen = "main" | "loading" | "game" | "gameOver";
+export type TScreen = "main" | "loading" | "game" | "gameOver";
+
+export interface ScreenProps {
+    action: (name: TScreen) => void;
+}
 
 const App: React.FC = () => {
-  const [currentScreen, setCurrentScreen] = useState<TScreen>("main");
+  const [currentScreen, setCurrentScreen] = useState<TScreen>("game");
 
   const handleNextScreen = (name: TScreen) => {
     setCurrentScreen(name)
@@ -23,9 +27,9 @@ const App: React.FC = () => {
       </div>
 
       <div className="content">
-        {currentScreen === "main" && <MainMenu action={handleNextScreen}/>}
-        {currentScreen === 'loading' && <LoadingScreen action={handleNextScreen}/>}
-        {currentScreen === 'game' && <GameScreen action={handleNextScreen}/>}
+        {currentScreen === "main" && <MainMenu action={handleNextScreen} />}
+        {currentScreen === 'loading' && <LoadingScreen action={handleNextScreen} />}
+        {currentScreen === 'game' && <GameScreen />}
       </div>
     </div>
   );

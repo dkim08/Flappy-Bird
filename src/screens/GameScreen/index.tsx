@@ -1,10 +1,10 @@
 import React, { useState} from "react";
 // import Bird from "../../components/Bird"
-import Pipes, {TPipePosition, TPipeSize} from "../../components/Pipes"
+import Pipes, {PipeProps} from "../../components/Pipes"
 import "./style.css";
 
 const GameScreen: React.FC = () => {
-    const [pipes, setPipes] = useState([
+    const [pipes, setPipes] = useState<PipeProps[]>([
         {size: 'large', position: 'top', coordX: 200},
         {size: 'short', position: 'bottom', coordX: 250},
         {size: 'large', position: 'top', coordX: 300},
@@ -20,7 +20,12 @@ const GameScreen: React.FC = () => {
             {/* <Bird /> */}
             <div className="pipes-pare-wrapper">
                 {pipes.map((pipe, index) => (
-                    <Pipes key={index} position={pipe.position as TPipePosition} size={pipe.size as TPipeSize} coordX={pipe.coordX as number}/>
+                    <Pipes
+                        key={index}
+                        position={pipe.position}
+                        size={pipe.size}
+                        coordX={pipe.coordX}
+                    />
                 ))}
             </div>
         </div>

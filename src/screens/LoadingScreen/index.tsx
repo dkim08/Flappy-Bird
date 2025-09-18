@@ -1,7 +1,8 @@
 import React from "react";
 import './style.css';
+import {ScreenProps} from "../../components/App";
 
-const LoadingScreen: React.FC = ({action} : MainMenuProps) => {
+const LoadingScreen: React.FC<ScreenProps> = ({action} : ScreenProps) => {
 
     setTimeout( () => {
         action('game')

@@ -20,12 +20,7 @@ const GameScreen: React.FC = () => {
             {/* <Bird /> */}
             <div className="pipes-pare-wrapper">
                 {pipes.map((pipe, index) => (
-                    <Pipes
-                        key={index}
-                        position={pipe.position as TPipePosition}
-                        size={pipe.size as TPipeSize}
-                        coordX={pipe.coordX as number}
-                    />
+                    <Pipes key={index} position={pipe.position as TPipePosition} size={pipe.size as TPipeSize} coordX={pipe.coordX as number}/>
                 ))}
             </div>
         </div>

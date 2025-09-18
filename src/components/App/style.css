@@ -17,6 +17,7 @@ body {
   left: 0;
   right: 0;
   margin: auto;
+  height: 100%;
 }
 
 .background-image {
@@ -24,6 +25,8 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  max-height: 926px;
+
 }
 
 .background-image img {

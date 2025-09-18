@@ -9,7 +9,9 @@ const LoadingScreen: React.FC = ({action} : MainMenuProps) => {
 
     return(
         <div className="loading-screen">
-            <div className="loader"></div>
+            <div className="loader">
+                <h1>Loading</h1>
+            </div>
         </div>
     )
 }

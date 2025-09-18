@@ -1,12 +1,16 @@
 .loader  {
   height: 20px;
-  background-color: #f31111;
+  background-color: #b1e3ff;
   position: absolute;
   bottom: 0;
   left: 0;
   animation: load 3s linear infinite;
 }
 
+h1{
+  color: white;
+  margin-top: 30px;
+}
 @keyframes load{
   0% {
     width: 0%;

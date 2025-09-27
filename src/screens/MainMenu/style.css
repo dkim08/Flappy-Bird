@@ -6,13 +6,9 @@
     margin-top: 252px;
 }
 
-.bird {
-    position: absolute;
-    left: 50%;
-    animation: fly 1.5s ease-in-out infinite;
-}
 
-@keyframes fly {
+
+/* @keyframes fly {
     0% {
         transform: translate(-50%, 0);
     }
@@ -24,7 +20,7 @@
     100% {
         transform: translate(-50%, 0);
     }
-}
+} */
 
 .title {
     margin-top: 50px;

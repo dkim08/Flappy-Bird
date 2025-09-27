@@ -12,17 +12,18 @@
 
 .pipes-container {
     position: relative;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-
+/* 
 .short-pipe-wrapper,
 .large-pipe-wrapper {
     position: absolute;
-}
+}  */
 
 .short-pipe-wrapper img,
 .large-pipe-wrapper img {

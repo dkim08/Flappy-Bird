@@ -3,12 +3,11 @@ import './style.css';
 import flappyBird from '../../../public/assets/Flappy Bird.svg';
 import title from '../../../public/assets/Icon Flappy Bird .svg';
 import welcome from '../../../public/assets/welcome.svg';
+import { ScreenProps } from "../../components/App";
 
 
-interface MainMenuProps {
-  action: (name: TScreen) => void;
-}
-const MainMenu: React.FC = ({action} : MainMenuProps) => {
+
+const MainMenu: React.FC<ScreenProps> = ({action} : ScreenProps) => {
   
   return (
     <div className="main-menu" onClick={() => action('loading')}>

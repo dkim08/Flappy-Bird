@@ -1,7 +1,13 @@
 .flappy-bird-container {
-    position: relative;
+    position: absolute;
+    top: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 252px;
+}
+
+.bird {
+    position: absolute;
+    left: 50%;
+    /* animation: fly 1.5s ease-in-out infinite; */
 }

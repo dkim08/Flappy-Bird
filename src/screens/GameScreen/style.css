@@ -1,6 +1,6 @@
-.pipes-container img {
+/* .pipes-container img {
     width: 100%;
-}
+} */
 
 .game-screen {
     position: relative;
@@ -10,15 +10,12 @@
     overflow: hidden;
 }
 
-.bird-game-screen {
-    position: absolute;
-    left: 50%;
-    margin-top: 252px;
-}
 
 .pipes-pare-wrapper {
-    position: absolute;
+    display: flex;
+    gap: 150px;
+    /* position: absolute;
     left: -10%;
     width: 150%;
-    display: flex;
+    display: flex; */
 }

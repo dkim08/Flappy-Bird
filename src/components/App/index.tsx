@@ -13,7 +13,7 @@ export interface ScreenProps {
 }
 
 const App: React.FC = () => {
-  const [currentScreen, setCurrentScreen] = useState<TScreen>("game");
+  const [currentScreen, setCurrentScreen] = useState<TScreen>("main");
 
   const handleNextScreen = (name: TScreen) => {
     setCurrentScreen(name)

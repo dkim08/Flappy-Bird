@@ -31,30 +31,30 @@ const GameScreen: React.FC<ScreenProps> = ({action}) => {
     const [passedPipes, setPassedPipes] = useState<Set<number>>(new Set());
 
     const checkCollision = useCallback((bird: BirdPosition, pipes: Array<{ id: number, x: number, size?: 'short' | 'large' }>) => {
-        if (bird.y < 0 || bird.y + bird.height > SCREEN_HEIGHT) {
-            return true;
-        }
-
-        for (const pipe of pipes) {
-            const pipeX = pipe.x;
-            const pipeWidth = 66;
-
-            if (bird.x < pipeX + pipeWidth && bird.x + bird.width > pipeX) {
-                const topPipeHeight = pipe.size === 'short' ? SCREEN_HEIGHT * 0.3 : SCREEN_HEIGHT * 0.4;
-                const bottomPipeHeight = pipe.size === 'short' ? SCREEN_HEIGHT * 0.4 : SCREEN_HEIGHT * 0.3;
-
-                const topPipeBottom = topPipeHeight;
-                const bottomPipeTop = SCREEN_HEIGHT - bottomPipeHeight;
-
-                if (bird.y < topPipeBottom) {
-                    return true;
-                }
-
-                if (bird.y + bird.height > bottomPipeTop) {
-                    return true;
-                }
-            }
-        }
+        // if (bird.y < 0 || bird.y + bird.height > SCREEN_HEIGHT) {
+        //     return true;
+        // }
+        //
+        // for (const pipe of pipes) {
+        //     const pipeX = pipe.x;
+        //     const pipeWidth = 66;
+        //
+        //     if (bird.x < pipeX + pipeWidth && bird.x + bird.width > pipeX) {
+        //         const topPipeHeight = pipe.size === 'short' ? SCREEN_HEIGHT * 0.3 : SCREEN_HEIGHT * 0.4;
+        //         const bottomPipeHeight = pipe.size === 'short' ? SCREEN_HEIGHT * 0.4 : SCREEN_HEIGHT * 0.3;
+        //
+        //         const topPipeBottom = topPipeHeight;
+        //         const bottomPipeTop = SCREEN_HEIGHT - bottomPipeHeight;
+        //
+        //         if (bird.y < topPipeBottom) {
+        //             return true;
+        //         }
+        //
+        //         if (bird.y + bird.height > bottomPipeTop) {
+        //             return true;
+        //         }
+        //     }
+        // }
         return false;
     }, []);
 

@@ -28,7 +28,7 @@ const App: React.FC = () => {
       <div className="content">
         {currentScreen === "main" && <MainMenu action={handleNextScreen}/>}
         {currentScreen === 'loading' && <LoadingScreen action={handleNextScreen}/>}
-        {currentScreen === 'game' && <GameScreen />}
+        {currentScreen === 'game' && <GameScreen action={handleNextScreen} />}
       </div>
     </div>
   );

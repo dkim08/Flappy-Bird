@@ -1,32 +1,26 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, {ReactElement} from "react";
+import shortPipe from "../../../public/assets/shortPipe.svg";
+import LargePipe from "../../../public/assets/LargePipe.svg";
 import './style.css';
-import pipeBottom from "../../../public/assets/Pipe-bottom.svg";
-import pipeUp from "../../../public/assets/Pipe-up.svg";
-// import { PIPES } from "../../screens/GameScreen";
 
-export type TPipePosition = "top" | "bottom";
+export type TPipeDirection = "to-bottom" | "to-top";
 export type TPipeSize = "short" | "large";
 
 export interface PipeProps {
-    position: TPipePosition;
-    size: TPipeSize;
+    size?: TPipeSize;
+    direction?: TPipeDirection;
     styles?: React.CSSProperties;
     coordX?: number;
 }
 
-const Pipe: React.FC<PipeProps> = ({ position, size }: PipeProps): ReactElement => {
-    const transformStyles = position === "top" ? { transform: 'rotate(180deg)' } : { transform: 'rotate0)' };
-    const imgSrc = size === "short" ? pipeUp : pipeBottom;
-
+export const Pipe: React.FC<PipeProps> = ({size, direction}: PipeProps): ReactElement => {
+    const imgSrc = size === "short" ? shortPipe : LargePipe;
     return (
         <div
-            className={`${size}-pipe-wrapper`}
-            style={{
-                ...transformStyles,
-            }}
+            className={`${direction}-pipe-wrapper`}
         >
             <img
-                className={`${size}-pipe`}
+                className={`pipe`}
                 src={imgSrc}
                 alt=""
             />
@@ -34,16 +28,16 @@ const Pipe: React.FC<PipeProps> = ({ position, size }: PipeProps): ReactElement 
     );
 }
 
-const Pipes: React.FC<PipeProps> = ({ position, size }: PipeProps) => {
-    const size2 = size === 'short' ? 'large' : 'short';
-    const position2 = position === 'top' ? 'bottom' : 'top';
+const Pipes: React.FC<PipeProps> = ({size, coordX}: PipeProps) => {
+    const secondPipeSize = size === 'short' ? 'large' : 'short';
 
     return (
         <div
             className="pipes-container"
+            style={{transform: `translateX(${coordX}px)`}}
         >
-            <Pipe size={size} position={position} />
-            <Pipe size={size2} position={position2} />
+            <Pipe size={size} direction={'to-bottom'}/>
+            <Pipe size={secondPipeSize} direction={'to-top'}/>
         </div>
     )
 }

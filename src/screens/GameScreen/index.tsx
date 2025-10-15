@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState, useCallback} from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Bird from "../../components/Bird"
 import Pipes from "../../components/Pipes";
 import "./style.css";
-import {ScreenProps} from "../../components/App";
+import { ScreenProps } from "../../components/App";
 
 const getRandomSize = (): 'short' | 'large' => {
     return Math.random() < 0.5 ? 'short' : 'large';
@@ -22,7 +22,7 @@ interface BirdPosition {
     height: number;
 }
 
-const GameScreen: React.FC<ScreenProps> = ({action}) => {
+const GameScreen: React.FC<ScreenProps> = ({ action }) => {
     const [pipes, setPipes] = useState<Array<{ id: number, x: number, size?: 'short' | 'large' }>>([]);
     const nextIdRef = useRef(0);
     const [gameStarted, setGameStarted] = useState(false);
@@ -30,33 +30,46 @@ const GameScreen: React.FC<ScreenProps> = ({action}) => {
     const [score, setScore] = useState(0);
     const [passedPipes, setPassedPipes] = useState<Set<number>>(new Set());
 
-    const checkCollision = useCallback((bird: BirdPosition, pipes: Array<{ id: number, x: number, size?: 'short' | 'large' }>) => {
-        // if (bird.y < 0 || bird.y + bird.height > SCREEN_HEIGHT) {
-        //     return true;
-        // }
-        //
-        // for (const pipe of pipes) {
-        //     const pipeX = pipe.x;
-        //     const pipeWidth = 66;
-        //
-        //     if (bird.x < pipeX + pipeWidth && bird.x + bird.width > pipeX) {
-        //         const topPipeHeight = pipe.size === 'short' ? SCREEN_HEIGHT * 0.3 : SCREEN_HEIGHT * 0.4;
-        //         const bottomPipeHeight = pipe.size === 'short' ? SCREEN_HEIGHT * 0.4 : SCREEN_HEIGHT * 0.3;
-        //
-        //         const topPipeBottom = topPipeHeight;
-        //         const bottomPipeTop = SCREEN_HEIGHT - bottomPipeHeight;
-        //
-        //         if (bird.y < topPipeBottom) {
-        //             return true;
-        //         }
-        //
-        //         if (bird.y + bird.height > bottomPipeTop) {
-        //             return true;
-        //         }
-        //     }
-        // }
+    
+    const checkCollision = useCallback(() => {
+        const topPipesList = document.querySelectorAll('.to-bottom-pipe-wrapper');
+        const bottomPipesList = document.querySelectorAll('.to-top-pipe-wrapper');
+        const bird = document.querySelector('.bird');
+
+        if (!bird || !topPipesList || !bottomPipesList){
+            return false;
+        } 
+
+        const birdRect = bird.getBoundingClientRect();
+        // const GAP_HEIGHT = 200;
+
+        for (let i = 0; i < topPipesList.length; i++) {
+            const topPipe = topPipesList[i];
+            const bottomPipe = bottomPipesList[i];
+
+            if (!topPipe || !bottomPipe) return;
+
+            const topRect = topPipe.getBoundingClientRect();
+            const bottomRect = bottomPipe.getBoundingClientRect();
+
+            const xCollision = birdRect.right > topRect.left && birdRect.left < topRect.right;
+            const gapTop = topRect.bottom;
+            const gapBottom = bottomRect.top;
+            const yCollision = birdRect.top < gapTop || birdRect.bottom > gapBottom;
+
+            if (xCollision && yCollision) {
+                return true;
+            }
+        }
+
+        if (birdRect.top <= 0 || birdRect.bottom >= window.innerHeight - 20) {
+            return true;
+        }
+
         return false;
     }, []);
+
+
 
     const updateScore = useCallback((bird: BirdPosition, pipes: Array<{ id: number, x: number, size?: 'short' | 'large' }>) => {
         let newScore = 0;
@@ -85,12 +98,12 @@ const GameScreen: React.FC<ScreenProps> = ({action}) => {
     const handleGameOver = () => {
         setGameOver(true);
         setGameStarted(false);
-        setTimeout(() => action('main'), 3000);
+        // setTimeout(() => action('main'), 3000);
     };
 
     const handleBirdPositionUpdate = (position: BirdPosition) => {
         if (gameStarted && !gameOver) {
-            if (checkCollision(position, pipes)) {
+            if (checkCollision()) {
                 handleGameOver();
                 return;
             }
@@ -151,6 +164,9 @@ const GameScreen: React.FC<ScreenProps> = ({action}) => {
                 <div className="game-over-screen">
                     <h2>Вы проиграли!</h2>
                     <p>Рекорд: {score}</p>
+                    <button className="restart-btn" onClick={() => action('main')}>
+                        Играть сново
+                    </button>
                 </div>
             )}
 
@@ -167,7 +183,7 @@ const GameScreen: React.FC<ScreenProps> = ({action}) => {
             />
 
             {pipes.map((pipe) => (
-                <Pipes key={pipe.id} coordX={pipe.x} size={pipe.size}/>
+                <Pipes key={pipe.id} coordX={pipe.x} size={pipe.size} />
             ))}
         </div>
     );

@@ -28,7 +28,7 @@ const Bird: React.FC<BirdProps> = ({
     const lastTimeRef = useRef<number>(0);
 
     const GRAVITY = 0.5;
-    const JUMP_FORCE = -12;
+    const JUMP_FORCE = -10;
     const MAX_ROTATION = 30;
     const MIN_ROTATION = -90;
     const MAX_VELOCITY = 15;

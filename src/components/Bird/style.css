@@ -8,6 +8,6 @@
 
 .bird {
     position: absolute;
-    left: 50%;
+    /* left: 50%; */
     /* animation: fly 1.5s ease-in-out infinite; */
 }

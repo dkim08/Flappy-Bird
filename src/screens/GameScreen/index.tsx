@@ -9,7 +9,6 @@ const getRandomSize = (): 'short' | 'large' => {
 };
 
 const SCREEN_WIDTH = 400;
-const SCREEN_HEIGHT = 600;
 const PIPE_SPEED = 2;
 const PIPE_GAP = 200;
 const SPAWN_X = SCREEN_WIDTH + 100;
@@ -41,7 +40,6 @@ const GameScreen: React.FC<ScreenProps> = ({ action }) => {
         } 
 
         const birdRect = bird.getBoundingClientRect();
-        // const GAP_HEIGHT = 200;
 
         for (let i = 0; i < topPipesList.length; i++) {
             const topPipe = topPipesList[i];
@@ -98,7 +96,6 @@ const GameScreen: React.FC<ScreenProps> = ({ action }) => {
     const handleGameOver = () => {
         setGameOver(true);
         setGameStarted(false);
-        // setTimeout(() => action('main'), 3000);
     };
 
     const handleBirdPositionUpdate = (position: BirdPosition) => {

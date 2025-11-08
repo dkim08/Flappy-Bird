@@ -24,7 +24,7 @@ const Bird: React.FC<BirdProps> = ({
     const [rotation, setRotation] = useState<number>(0);
     const [isFlapping, setIsFlapping] = useState<boolean>(false);
     const [isJumping, setIsJumping] = useState<boolean>(false);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number>(0);
     const lastTimeRef = useRef<number>(0);
 
     const GRAVITY = 0.5;

@@ -3,7 +3,7 @@ import './style.css';
 import flappyBird from '../../../public/assets/Flappy Bird.svg';
 import title from '../../../public/assets/Icon Flappy Bird .svg';
 import welcome from '../../../public/assets/welcome.svg';
-import { ScreenProps } from "../../components/App";
+import { type ScreenProps } from "../../components/App";
 
 
 

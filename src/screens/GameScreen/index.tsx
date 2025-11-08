@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import Bird from "../../components/Bird"
 import Pipes from "../../components/Pipes";
 import "./style.css";
-import { ScreenProps } from "../../components/App";
+import { type ScreenProps } from "../../components/App";
 
 const getRandomSize = (): 'short' | 'large' => {
     return Math.random() < 0.5 ? 'short' : 'large';

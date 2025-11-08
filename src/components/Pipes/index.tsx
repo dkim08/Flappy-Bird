@@ -1,4 +1,4 @@
-import React, {ReactElement} from "react";
+import React, {type ReactElement} from "react";
 import shortPipe from "../../../public/assets/shortPipe.svg";
 import LargePipe from "../../../public/assets/LargePipe.svg";
 import './style.css';

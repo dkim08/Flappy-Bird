@@ -4,7 +4,7 @@ import React from "react";
 import MainMenu from "../../screens/MainMenu";
 import LoadingScreen from "../../screens/LoadingScreen";
 import GameScreen from "../../screens/GameScreen";
-import landingPage from "../../../public/assets/Landing Page.svg"
+import landingPage from "../../../public/assets/Landing Page.svg";
 
 
 export type TScreen = "main" | "loading" | "game" | "gameOver";

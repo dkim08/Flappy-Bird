@@ -134,6 +134,7 @@ const Bird: React.FC<BirdProps> = ({
                 transition: gameStarted ? 'none' : 'transform 0.3s ease-out'
             }}
             onClick={handleClick}
+            onTouchStart={handleClick}
         >
             <img
                 className={`bird ${isFlapping ? 'flapping' : ''} ${isJumping ? 'jumping' : ''}`}

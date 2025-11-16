@@ -65,7 +65,13 @@ const Bird: React.FC<BirdProps> = ({
         };
 
         window.addEventListener('keydown', handleKeyPress);
-        return () => window.removeEventListener('keydown', handleKeyPress);
+        document.addEventListener('touchstart', handleClick);
+        document.addEventListener('click', handleClick);
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+            document.removeEventListener('touchstart', handleClick);
+            document.removeEventListener('click', handleClick);
+        }
     }, [handleClick]);
 
     useEffect(() => {
@@ -133,8 +139,6 @@ const Bird: React.FC<BirdProps> = ({
                 transform: `translateX(${x}px) translateY(${position}px) rotate(${rotation}deg)`,
                 transition: gameStarted ? 'none' : 'transform 0.3s ease-out'
             }}
-            onClick={handleClick}
-            onTouchStart={handleClick}
         >
             <img
                 className={`bird ${isFlapping ? 'flapping' : ''} ${isJumping ? 'jumping' : ''}`}

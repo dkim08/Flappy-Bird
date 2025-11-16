@@ -65,11 +65,9 @@ const Bird: React.FC<BirdProps> = ({
         };
 
         window.addEventListener('keydown', handleKeyPress);
-        document.addEventListener('touchstart', handleClick);
         document.addEventListener('click', handleClick);
         return () => {
             window.removeEventListener('keydown', handleKeyPress);
-            document.removeEventListener('touchstart', handleClick);
             document.removeEventListener('click', handleClick);
         }
     }, [handleClick]);
